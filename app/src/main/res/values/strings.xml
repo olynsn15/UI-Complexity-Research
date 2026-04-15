@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ThesisUIResearch</string>
+    <string name="price_format">Rp %d</string>
+    <string name="rating_format">⭐ %.1f</string>
+    <string name="sold_format">%d terjual</string>
 </resources>
