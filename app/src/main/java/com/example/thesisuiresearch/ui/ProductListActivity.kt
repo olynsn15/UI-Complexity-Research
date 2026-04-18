@@ -1,7 +1,10 @@
 package com.example.thesisuiresearch.ui
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thesisuiresearch.R
@@ -13,6 +16,12 @@ class ProductListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_list)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(v.paddingLeft + 20, systemBars.top, v.paddingRight + 20, 0)
+            insets
+        }
 
         val variant = intent.getIntExtra("variant", 1)
 
@@ -28,5 +37,9 @@ class ProductListActivity : AppCompatActivity() {
         }
 
         recyclerView.adapter = adapter
+
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
+            finish()
+        }
     }
 }
