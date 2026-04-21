@@ -12,6 +12,7 @@ import com.example.thesisuiresearch.ui.adapters.Variant1Adapter
 import com.example.thesisuiresearch.ui.adapters.Variant2Adapter
 import com.example.thesisuiresearch.ui.adapters.Variant3Adapter
 
+
 class ProductListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
