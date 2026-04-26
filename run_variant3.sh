@@ -8,11 +8,18 @@ DURATION=15
 
 OUT_CPU="cpu_variant${VARIANT}_run${RUN}.csv"
 OUT_MEM="mem_variant${VARIANT}_run${RUN}.csv"
+OUT_LAUNCH="launch_variant${VARIANT}_run${RUN}.txt"
+OUT_FRAME="frame_variant${VARIANT}_run${RUN}.txt"
+OUT_GPU="gpu_variant${VARIANT}_run${RUN}.txt"
+OUT_BATTERY="battery_variant${VARIANT}_run${RUN}.txt"
 
 echo "Starting Variant $VARIANT Run $RUN"
 
+adb shell dumpsys batterystats --reset
+
 adb shell am force-stop "$PKG"
-adb shell am start -n "$ACTIVITY" --ei variant "$VARIANT"
+
+adb shell am start -W -n "$ACTIVITY" --ei variant "$VARIANT" > "$OUT_LAUNCH"
 
 sleep 3
 
@@ -38,9 +45,16 @@ done
 
 MEM=$(adb shell dumpsys meminfo "$PKG" | grep "TOTAL PSS" | awk '{print $3}')
 MEM_MB=$(echo "scale=2; $MEM/1024" | bc)
-
 echo "$MEM_MB" >> "$OUT_MEM"
 
+adb shell dumpsys gfxinfo "$PKG" framestats > "$OUT_FRAME"
+adb shell dumpsys gfxinfo "$PKG" > "$OUT_GPU"
+adb shell dumpsys batterystats > "$OUT_BATTERY"
+
 echo "Done!"
-echo "CPU saved to $OUT_CPU"
-echo "Memory saved to $OUT_MEM"
+echo "CPU -> $OUT_CPU"
+echo "Memory -> $OUT_MEM"
+echo "Launch time -> $OUT_LAUNCH"
+echo "Frame stats -> $OUT_FRAME"
+echo "GPU info -> $OUT_GPU"
+echo "Battery -> $OUT_BATTERY"
