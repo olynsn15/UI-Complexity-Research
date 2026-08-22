@@ -16,7 +16,6 @@ class Variant3Adapter(private val list: List<Product>): RecyclerView.Adapter<Var
         val price: TextView = view.findViewById(R.id.tvPrice)
         val stock: TextView = view.findViewById(R.id.tvStock)
         val rating: TextView = view.findViewById(R.id.tvRating)
-        val sold: TextView = view.findViewById(R.id.tvSold)
         val location: TextView = view.findViewById(R.id.tvLocation)
     }
 
@@ -35,7 +34,6 @@ class Variant3Adapter(private val list: List<Product>): RecyclerView.Adapter<Var
         holder.price.text = holder.itemView.context.getString(R.string.price_format, product.price)
         holder.stock.text = holder.itemView.context.getString(R.string.stock_format, product.stockStatus)
         holder.rating.text = holder.itemView.context.getString(R.string.rating_format, product.rating)
-        holder.sold.text = holder.itemView.context.getString(R.string.sold_format, product.sold)
         holder.location.text = product.location
     }
 }

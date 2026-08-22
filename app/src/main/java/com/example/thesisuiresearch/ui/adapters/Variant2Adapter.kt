@@ -13,7 +13,6 @@ class Variant2Adapter(private val list: List<Product>) : RecyclerView.Adapter<Va
         val name: TextView = view.findViewById(R.id.tvProductName)
         val category: TextView = view.findViewById(R.id.tvCategory)
         val price: TextView = view.findViewById(R.id.tvPrice)
-        val stock: TextView = view.findViewById(R.id.tvStock)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder {
@@ -28,6 +27,5 @@ class Variant2Adapter(private val list: List<Product>) : RecyclerView.Adapter<Va
         holder.name.text = product.name
         holder.category.text = product.category
         holder.price.text = holder.itemView.context.getString(R.string.price_format, product.price)
-        holder.stock.text = holder.itemView.context.getString(R.string.stock_format, product.stockStatus)
     }
 }
