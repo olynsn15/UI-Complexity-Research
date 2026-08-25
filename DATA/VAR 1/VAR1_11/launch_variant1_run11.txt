@@ -1,7 +1,0 @@
-Starting: Intent { cmp=com.example.thesisuiresearch/.ui.ProductListActivity (has extras) }
-Status: ok
-LaunchState: COLD
-Activity: com.example.thesisuiresearch/.ui.ProductListActivity
-TotalTime: 724
-WaitTime: 733
-Complete
