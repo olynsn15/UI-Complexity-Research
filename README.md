@@ -171,7 +171,3 @@ direct measurements of energy consumption.
     interpreted as direct energy measurements.
 -   Complete raw ADB logs for all analyzed runs and a complete automated
     parsing pipeline are not included.
-
-## Repository link
-
-<https://github.com/olynsn15/UI-Complexity-Research>
